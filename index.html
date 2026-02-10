@@ -164,6 +164,25 @@
         body.light img.no-invert { filter: none !important; }
 
         /* Cookie banner styles moved to cookie-banner.css */
+
+        /* Timeline (Experiência Profissional) */
+        .timeline { position: relative; padding-top: 1rem; padding-bottom: 1rem; }
+        .timeline-line { position: absolute; left: 50%; transform: translateX(-50%); width: 2px; background: rgba(255,255,255,0.06); top: 0; bottom: 0; }
+        .timeline-item { position: relative; }
+        .timeline-dot { width: 14px; height: 14px; border-radius: 9999px; background: var(--brand); border: 3px solid var(--bg); box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
+        .timeline-content { background: var(--panel); border: 1px solid rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 0.75rem; max-width: 520px; }
+        @media (min-width: 768px) {
+            .timeline-item { display: grid; grid-template-columns: 1fr 64px 1fr; gap: 0; align-items: start; }
+            .timeline-item .left { text-align: right; padding-right: 1.5rem; }
+            .timeline-item .right { text-align: left; padding-left: 1.5rem; }
+            .timeline-line { display: block; }
+            .timeline-dot { margin: 6px auto; }
+        }
+        @media (max-width: 767px) {
+            .timeline-line { display: none; }
+            .timeline-dot { display: none; }
+            .timeline-content { width: 100%; }
+        }
     </style>
         <script type="application/ld+json">
         {
@@ -360,6 +379,95 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Experience / Experiência Profissional (Linha do Tempo) -->
+        <section id="experience" class="py-20 reveal">
+            <div class="max-w-[1200px] mx-auto px-6 md:px-0">
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-1">Experiência Profissional</h2>
+                        <p class="text-slate-500">Linha do tempo com cargos, responsabilidades e períodos importantes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline relative">
+                    <div class="timeline-line hidden md:block"></div>
+                    <div class="space-y-12">
+                        <!-- Item 1 (left) -->
+                        <div class="timeline-item">
+                            <div class="left md:col-span-1">
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">Suporte técnico em TI - Ensino médio</h3>
+                                    <p class="text-slate-400 mt-2">Era conhecido como o cara da TI na minha escola de ensino médio, ajudava ativamente professores e colegas com problemas voltados a informática.</p>
+                                    <div class="text-sm text-slate-500 mt-4">Jan 2023 — Dez 2024</div>
+                                </div>
+                            </div>
+                            <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot hidden md:block"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 (right) -->
+                        <div class="timeline-item">
+                            <div class="left md:col-span-1 hidden md:block" aria-hidden="true"></div>
+                            <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot hidden md:block"></div>
+                            </div>
+                            <div class="right md:col-span-1">
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">Aprendiz de Eletricista — FR Instalações e Construções</h3>
+                                    <p class="text-slate-400 mt-2">Durante meu período letivo no SENAI, adquiri conhecimentos práticos e teóricos em instalações elétricas residenciais, industriais e eletrônica com carteira assinada por patrocínio.</p>
+                                    <div class="text-sm text-slate-500 mt-4">Ago 2023 — Jul 2025</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 (left) -->
+                        <div class="timeline-item">
+                            <div class="left md:col-span-1">
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">Fundador & Segurança cibernético — ScriptHadder</h3>
+                                    <p class="text-slate-400 mt-2">Fundei a startup ScriptHadder, focada em soluções de codificações seguras, atualmente atuo como Segurnaça cibernético, Cloud Security e DevSecOps.</p>
+                                    <div class="text-sm text-slate-500 mt-4">Ago 2025 — Presente</div>
+                                </div>
+                            </div>
+                            <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot hidden md:block"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 (right) -->
+                        <div class="timeline-item">
+                            <div class="left md:col-span-1 hidden md:block" aria-hidden="true"></div>
+                            <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot hidden md:block"></div>
+                            </div>
+                            <div class="right md:col-span-1">
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">Estagiário em Suporte Técnico — EPTV</h3>
+                                    <p class="text-slate-400 mt-2">Auxilio os técnicos na manutenção e suporte dos sistemas internos da empresa em TO (Tecnologia Operacional) e TI(Tecnologia da Informação).</p>
+                                    <div class="text-sm text-slate-500 mt-4">Out 2025 — Presente</div>
+                                </div>
+                            </div>
+                        </div>
+
+                                <!-- Item 3 (left) -->
+                        <div class="timeline-item">
+                            <div class="left md:col-span-1">
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">Pentester — FIAP (Challenger)</h3>
+                                    <p class="text-slate-400 mt-2">Durante minha formação estou podendo atuar como pentester em empresas parceiras da FIAP, podendo assim adquirir conhecimentos práticos de penetração de sistemas e gerenciamento de vulnerabilidades.</p>
+                                    <div class="text-sm text-slate-500 mt-4">Dez 2025 — Presente</div>
+                                </div>
+                            </div>
+                            <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot hidden md:block"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
