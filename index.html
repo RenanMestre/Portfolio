@@ -179,10 +179,14 @@
             .timeline-dot { margin: 6px auto; }
         }
         @media (max-width: 767px) {
-            /* Keep the central line visible on mobile but subtle */
-            .timeline-line { display: block; background: rgba(255,255,255,0.04); left: 50%; }
-            .timeline-dot { display: block; }
-            .timeline-content { width: 100%; margin: 0 auto; }
+            /* On small screens: show a left-side timeline line and dots, shift content to the right and increase spacing */
+            .timeline-line { display: block; background: rgba(255,255,255,0.08); left: 1.5rem; transform: none; width: 2px; }
+            .timeline-item { padding-left: 0; }
+            /* Position dots absolutely so they align with the central line on mobile */
+            .timeline-dot { display: block; position: absolute; left: 1.5rem; top: 1.6rem; width: 10px; height: 10px; margin: 0; transform: translateX(-50%); }
+            .timeline-content { width: calc(100% - 4rem); margin: 0; margin-left: 4rem; }
+            /* Slightly increase vertical padding between items on mobile for clarity */
+            .timeline .space-y-16 > .timeline-item { padding-top: 1.5rem; padding-bottom: 1.5rem; }
         }
 
         /* Light theme: ensure the central line and dots are visible against light background */
@@ -403,8 +407,8 @@
                 </div>
 
                 <div class="timeline relative">
-                    <div class="timeline-line hidden md:block"></div>
-                    <div class="space-y-12">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-16">
                         <!-- Item 1 (left) -->
                         <div class="timeline-item">
                             <div class="left md:col-span-1">
@@ -415,7 +419,7 @@
                                 </div>
                             </div>
                             <div class="md:flex md:justify-center" aria-hidden="true">
-                                <div class="timeline-dot hidden md:block"></div>
+                                <div class="timeline-dot"></div>
                             </div>
                         </div>
 
@@ -423,7 +427,7 @@
                         <div class="timeline-item">
                             <div class="left md:col-span-1 hidden md:block" aria-hidden="true"></div>
                             <div class="md:flex md:justify-center" aria-hidden="true">
-                                <div class="timeline-dot hidden md:block"></div>
+                                <div class="timeline-dot"></div>
                             </div>
                             <div class="right md:col-span-1">
                                 <div class="timeline-content">
@@ -443,8 +447,8 @@
                                     <div class="text-sm text-slate-500 mt-4">Ago 2025 — Presente</div>
                                 </div>
                             </div>
-                            <div class="md:flex md:justify-center" aria-hidden="true">
-                                <div class="timeline-dot hidden md:block"></div>
+                                <div class="md:flex md:justify-center" aria-hidden="true">
+                                <div class="timeline-dot"></div>
                             </div>
                         </div>
 
@@ -452,7 +456,7 @@
                         <div class="timeline-item">
                             <div class="left md:col-span-1 hidden md:block" aria-hidden="true"></div>
                             <div class="md:flex md:justify-center" aria-hidden="true">
-                                <div class="timeline-dot hidden md:block"></div>
+                                <div class="timeline-dot"></div>
                             </div>
                             <div class="right md:col-span-1">
                                 <div class="timeline-content">
@@ -473,7 +477,7 @@
                                 </div>
                             </div>
                             <div class="md:flex md:justify-center" aria-hidden="true">
-                                <div class="timeline-dot hidden md:block"></div>
+                                <div class="timeline-dot"></div>
                             </div>
                         </div>
                     </div>
