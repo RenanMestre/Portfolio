@@ -148,6 +148,13 @@
         body.light .bg-cyan-500 { background-color: var(--brand) !important; }
         body.light .text-cyan-400 { color: var(--brand) !important; }
 
+        /* Theme toggle icons: show sun in light mode, moon in dark mode */
+        .theme-icon { display: inline-block; vertical-align: middle; }
+        .theme-icon.sun { display: none; }
+        .theme-icon.moon { display: inline-block; }
+        body.light .theme-icon.sun { display: inline-block !important; }
+        body.light .theme-icon.moon { display: none !important; }
+
         /* Borders that used `border-white` utilities */
         body.light [class*="border-white"] { border-color: rgba(11,18,32,0.06) !important; }
 
@@ -250,12 +257,18 @@
                     Connect
                     <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                 </a>
-                <button id="theme-toggle" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition">Tema</button>
+                <button id="theme-toggle" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition">
+                    <i data-lucide="moon" class="theme-icon sun w-4 h-4"></i>
+                    <i data-lucide="sun" class="theme-icon moon w-4 h-4"></i>
+                </button>
             </div>
 
             <!-- Mobile actions: show theme toggle on small screens -->
             <div class="flex md:hidden items-center gap-3">
-                <button id="theme-toggle-mobile" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full transition">Tema</button>
+                <button id="theme-toggle-mobile" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full transition">
+                    <i data-lucide="moon" class="theme-icon sun w-4 h-4"></i>
+                    <i data-lucide="sun" class="theme-icon moon w-4 h-4"></i>
+                </button>
             </div>
 
             <!-- mobile menu removed -->
