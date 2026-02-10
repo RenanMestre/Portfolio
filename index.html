@@ -167,10 +167,10 @@
 
         /* Timeline (Experiência Profissional) */
         .timeline { position: relative; padding-top: 1rem; padding-bottom: 1rem; }
-        .timeline-line { position: absolute; left: 50%; transform: translateX(-50%); width: 2px; background: rgba(255,255,255,0.06); top: 0; bottom: 0; }
+        .timeline-line { position: absolute; left: 50%; transform: translateX(-50%); width: 2px; background: rgba(255,255,255,0.06); top: 0; bottom: 0; z-index:1; }
         .timeline-item { position: relative; }
-        .timeline-dot { width: 14px; height: 14px; border-radius: 9999px; background: var(--brand); border: 3px solid var(--bg); box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
-        .timeline-content { background: var(--panel); border: 1px solid rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 0.75rem; max-width: 520px; }
+        .timeline-dot { width: 14px; height: 14px; border-radius: 9999px; background: var(--brand); border: 3px solid var(--bg); box-shadow: 0 6px 18px rgba(2,6,23,0.6); display:block; }
+        .timeline-content { background: var(--panel); border: 1px solid rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 0.75rem; max-width: 520px; position:relative; z-index:10; }
         @media (min-width: 768px) {
             .timeline-item { display: grid; grid-template-columns: 1fr 64px 1fr; gap: 0; align-items: start; }
             .timeline-item .left { text-align: right; padding-right: 1.5rem; }
@@ -179,10 +179,15 @@
             .timeline-dot { margin: 6px auto; }
         }
         @media (max-width: 767px) {
-            .timeline-line { display: none; }
-            .timeline-dot { display: none; }
-            .timeline-content { width: 100%; }
+            /* Keep the central line visible on mobile but subtle */
+            .timeline-line { display: block; background: rgba(255,255,255,0.04); left: 50%; }
+            .timeline-dot { display: block; }
+            .timeline-content { width: 100%; margin: 0 auto; }
         }
+
+        /* Light theme: ensure the central line and dots are visible against light background */
+        body.light .timeline-line { background: rgba(11,18,32,0.08) !important; }
+        body.light .timeline-dot { border-color: var(--panel) !important; box-shadow: 0 6px 18px rgba(11,18,32,0.06) !important; }
     </style>
         <script type="application/ld+json">
         {
@@ -244,6 +249,11 @@
                 <button id="theme-toggle" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition">Tema</button>
             </div>
 
+            <!-- Mobile actions: show theme toggle on small screens -->
+            <div class="flex md:hidden items-center gap-3">
+                <button id="theme-toggle-mobile" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full transition">Tema</button>
+            </div>
+
             <!-- mobile menu removed -->
         </div>
     </nav>
@@ -276,8 +286,8 @@
                     Com maior avanço tecnológico, maior deverá ser a segurança. Com anos de estudo e experiência em Pentest e DevSecOps, estou comprometido em proteger os ativos digitais que impulsionam a inovação digital.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#ecosystem"><button class="px-8 py-4 bg-white text-black font-bold font-heading hover:bg-cyan-400 transition-colors rounded-sm w-full md:w-auto">
-                        ScriptHadder
+                    <a href="projects.html"><button class="px-8 py-4 bg-white text-black font-bold font-heading hover:bg-cyan-400 transition-colors rounded-sm w-full md:w-auto">
+                        Projetos
                     </button></a>
                     <a href="#about"><button class="px-8 py-4 border border-white/20 text-white font-bold font-heading hover:bg-white/5 transition-colors rounded-sm w-full md:w-auto">
                         Sobre Mim
@@ -329,15 +339,15 @@
                             <circle cx="24" cy="24" r="9" stroke="#fff" stroke-opacity="0.15" stroke-width="1.5"/>
                         </svg>
                     </div>
-                    <div class="h-full flex flex-col justify-between relative z-10">
-                        <div class="inline-block px-3 py-1 rounded bg-white/5 text-xs text-white w-fit">Segurança quântica</div>
+                    <div class="h-full flex flex-col justify-between relative z-20">
+                        <div class="inline-block px-3 py-1 rounded bg-white text-black text-xs font-bold w-fit backdrop-blur-sm">Segurança quântica</div>
                         <div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Vexcrypt</h3>
-                            <p class="text-slate-400 max-w-md">Ajudamos organizações a se prepararem para a nova era da segurança digital focada em codificações.</p>
+                            <h3 class="text-3xl font-bold mb-2 text-white" style="color: #ffffff !important; text-shadow:0 10px 30px rgba(0,0,0,0.75);"><strong>VEXCRYPT</strong></h3>
+                            <p class="max-w-md" style="color: rgba(255,255,255,0.88);">Ajudamos organizações a se prepararem para a nova era da segurança digital focada em codificações.</p>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <img src="https://scitechdaily.com/images/Quantum-Physics-Qubit-Concept.gif" loading="lazy" class="no-invert absolute inset-0 w-full h-full object-cover -z-10 opacity-30 group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent z-10"></div>
+                    <img src="https://static.wixstatic.com/media/9adcc5_38347e344ecd41d8822e6576c99e55e3~mv2.gif" loading="lazy" class="no-invert absolute inset-0 w-full h-full object-cover -z-30 opacity-40 group-hover:scale-105 transition-transform duration-700">
                 </div>
 
                 <!-- Stat Card 1 -->

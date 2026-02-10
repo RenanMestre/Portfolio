@@ -1,18 +1,19 @@
 // scripts.js — toggles de tema, copy snippets e inicializações leves
 (function(){
   // Theme toggle: use body.light to switch variables
-  const btn = document.getElementById('theme-toggle');
+  const btns = Array.from(document.querySelectorAll('#theme-toggle, #theme-toggle-mobile'));
   const body = document.body;
   const pref = localStorage.getItem('theme');
   if(pref === 'light') body.classList.add('light');
 
-  if(btn){
+  btns.forEach(btn => {
+    if(!btn) return;
     btn.addEventListener('click', () => {
       body.classList.toggle('light');
       const now = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('theme', now);
     });
-  }
+  });
 
   // Copy buttons for code snippets
   document.addEventListener('click', (e) => {
