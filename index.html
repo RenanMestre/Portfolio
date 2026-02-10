@@ -2,19 +2,42 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Renan Mestre — Portfólio: pentest, DevSecOps, projetos e consultoria em segurança da informação.">
+    <meta property="og:title" content="Renan Mestre — Portfólio" />
+    <meta property="og:description" content="Pentest, DevSecOps, projetos open-source e consultoria em segurança da informação." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/Renan.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio Renan Mestre</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" type="image/svg+xml" href="ico/Renan.ico">
+    <link rel="stylesheet" href="cookie-banner.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap');
-        
+
+        :root{
+            --bg: #030303;
+            --panel: #0a0a0a;
+            --muted: #94a3b8;
+            --text: #e2e8f0;
+            --brand: #06b6d4;
+        }
+        body.light{
+            --bg: #ffffff;
+            --panel: #f5f7fb;
+            --muted: #475569;
+            --text: #0b1220;
+            --brand: #06b6d4;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030303;
-            color: #e2e8f0;
+            background-color: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            transition: background-color 240ms ease, color 240ms ease;
         }
 
         h1, h2, h3, h4, .font-heading {
@@ -68,21 +91,110 @@
         }
 
         /* Marquee Animation */
+        /* Marquee / carousel improvements: overlay, contrast, hover-pause */
+        :root { --marquee-overlay: rgba(0,0,0,0.16); --marquee-fill: rgba(255,255,255,0.06); --marquee-stroke: rgba(255,255,255,0.14); }
+        body.light { --marquee-overlay: rgba(255,255,255,0.75); --marquee-fill: rgba(11,18,32,0.06); --marquee-stroke: rgba(11,18,32,0.16); }
+
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
+            position: relative;
+        }
+        .marquee-container::before{
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, var(--marquee-overlay) 0%, transparent 15%, transparent 85%, var(--marquee-overlay) 100%);
+            mix-blend-mode: normal;
+            transition: background-color 240ms ease, opacity 240ms ease;
         }
         .marquee-content {
             display: inline-block;
-            animation: marquee 20s linear infinite;
+            animation: marquee 25s linear infinite;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--marquee-fill);
+            -webkit-text-stroke: 1px var(--marquee-stroke);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.06);
+            opacity: 0.95;
+            will-change: transform;
         }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; }
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+
+        /* Light mode overrides: high-specificity fixes for Tailwind utility classes
+           Many elements use explicit utility classes (text-white, bg-[#030303], etc.).
+           When `body.light` is active we override the most important ones to ensure
+           legible colors and preserved design. */
+        body.light .text-white { color: var(--text) !important; }
+        body.light .text-slate-300,
+        body.light .text-slate-400,
+        body.light .text-slate-500 { color: var(--muted) !important; }
+
+        /* Background panels used across the site */
+        body.light .bg-\[\#030303\],
+        body.light .bg-\[\#0a0a0a\],
+        body.light .bg-\[\#080808\] { background-color: var(--panel) !important; }
+
+        /* Navbar and footer adjustments */
+        body.light nav { background-color: rgba(255,255,255,0.85) !important; border-color: rgba(11,18,32,0.06) !important; }
+        body.light footer { background-color: var(--panel) !important; }
+
+        /* Buttons and accent colors */
+        body.light .bg-cyan-500 { background-color: var(--brand) !important; }
+        body.light .text-cyan-400 { color: var(--brand) !important; }
+
+        /* Borders that used `border-white` utilities */
+        body.light [class*="border-white"] { border-color: rgba(11,18,32,0.06) !important; }
+
+        /* Marquee stroke for light theme */
+        body.light .marquee-content { -webkit-text-stroke: 1px rgba(11,18,32,0.08) !important; }
+
+        /* Gradient text (hero) override so it remains visible on light background */
+        body.light .bg-clip-text { background-image: linear-gradient(to right, rgba(71,85,105,1), rgba(11,18,32,1)) !important; -webkit-background-clip: text; color: transparent !important; }
+
+        /* Reduce noise opacity on light theme */
+        body.light .bg-noise { opacity: 0.02 !important; }
+
+        /* Ensure logo / avatar images stay natural colors */
+        body.light img.no-invert { filter: none !important; }
+
+        /* Cookie banner styles moved to cookie-banner.css */
     </style>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Person",
+                    "name": "Renan Mestre",
+                    "url": "https://renanmestre.com.br",
+                    "sameAs": [
+                        "https://github.com/renanmestre",
+                        "https://linkedin.com/in/renanmestre",
+                        "https://instagram.com/remestre_devsec"
+                    ],
+                    "jobTitle": "Segurança da Informação / DevSecOps"
+                },
+                {
+                    "@type": "WebSite",
+                    "url": "https://renanmestre.com.br",
+                    "name": "Renan Mestre — Portfólio",
+                    "publisher": {
+                        "@type": "Person",
+                        "name": "Renan Mestre"
+                    }
+                }
+            ]
+        }
+        </script>
 </head>
 <body class="relative">
+    <a class="sr-only focus:not-sr-only" href="#main-content">Pular para o conteúdo</a>
 
     <!-- Background Layers -->
     <div class="bg-noise"></div>
@@ -94,20 +206,24 @@
     <!-- Header -->
     <nav class="fixed w-full z-[9999] pointer-events-auto py-6 px-6 md:px-12 backdrop-blur-sm border-b border-white/5 bg-[#030303]/80">
         <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-tighter text-white font-heading">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white font-heading">
                 Renan<span class="text-cyan-400">Mestre</span>
             </a>
             
             <div class="hidden md:flex items-center space-x-8">
+                <a href="projects.html" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Projetos</a>
                 <a href="#ecosystem" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">ScriptHadder</a>
-                <a href="#manifesto" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Declaração</a>
-                <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Sobre Mim</a>
+                <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Sobre</a>
+                <a href="#contact" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Contato</a>
             </div>
 
-            <a href="#contact" class="hidden md:flex items-center gap-2 px-5 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition-all duration-300 text-xs uppercase font-bold tracking-wider">
-                Connect
-                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-            </a>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="contact.html" class="items-center gap-2 px-5 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition-all duration-300 text-xs uppercase font-bold tracking-wider">
+                    Connect
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+                <button id="theme-toggle" aria-label="Alternar tema" class="px-3 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition">Tema</button>
+            </div>
 
             <!-- mobile menu removed -->
         </div>
@@ -202,7 +318,7 @@
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <img src="https://scitechdaily.com/images/Quantum-Physics-Qubit-Concept.gif" class="absolute inset-0 w-full h-full object-cover -z-10 opacity-30 group-hover:scale-105 transition-transform duration-700">
+                    <img src="https://scitechdaily.com/images/Quantum-Physics-Qubit-Concept.gif" loading="lazy" class="no-invert absolute inset-0 w-full h-full object-cover -z-10 opacity-30 group-hover:scale-105 transition-transform duration-700">
                 </div>
 
                 <!-- Stat Card 1 -->
@@ -269,7 +385,7 @@
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="flex justify-center md:justify-end">
                         <div class="w-[320px] h-[320px] rounded-3xl overflow-hidden border border-white/5 shadow-lg">
-                            <img src="img/Renan.jpg" alt="Foto do CEO" class="w-full h-full object-cover">
+                            <img src="img/Renan.jpg" alt="Foto do CEO" loading="lazy" class="w-full h-full object-cover no-invert">
                         </div>
                     </div>
                     <div>
@@ -365,5 +481,8 @@
 
         // mobile navigation removed
     </script>
+    <script src="scripts.js"></script>
+    
+    <!-- Cookie / Consent banner placeholder will be created by scripts.js -->
 </body>
 </html>

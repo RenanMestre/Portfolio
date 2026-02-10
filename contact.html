@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contato — Renan Mestre</title>
+  <meta name="description" content="Entre em contato para consultoria, parcerias e projetos.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="cookie-banner.css">
+  <link rel="icon" type="image/svg+xml" href="ico/Renan.ico">
+</head>
+<body class="bg-[#030303] text-white min-h-screen">
+  <nav class="p-6">
+    <a href="index.html" class="font-bold mr-6">Início</a>
+    <a href="projects.html" class="mr-4">Projetos</a>
+    <a href="blog.html" class="mr-4">Blog</a>
+    <a href="contact.html" class="mr-4">Contato</a>
+  </nav>
+  <main class="max-w-3xl mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-4">Contato</h1>
+    <p class="text-slate-400 mb-6">Preencha o formulário abaixo ou envie e-mail para renanmestre2006@gmail.com</p>
+
+    <!-- Usando FormSubmit (sem backend). Substitua o e-mail se desejar. -->
+    <form action="https://formsubmit.co/renanmestre2006@gmail.com" method="POST" class="space-y-4">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Seu nome" required class="w-full p-3 rounded bg-[#0a0a0a] border border-white/5">
+      <input type="email" name="email" placeholder="Seu e-mail" required class="w-full p-3 rounded bg-[#0a0a0a] border border-white/5">
+      <textarea name="message" rows="6" placeholder="Mensagem" required class="w-full p-3 rounded bg-[#0a0a0a] border border-white/5"></textarea>
+      <button type="submit" class="px-6 py-3 bg-cyan-500 text-black rounded">Enviar</button>
+    </form>
+
+  </main>
+  <script src="scripts.js"></script>
+</body>
+</html>

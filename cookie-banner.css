@@ -1,0 +1,140 @@
+/* cookie-banner.css - estilos do banner de consentimento (suporta light/dark via body.light) */
+:root{
+  --bg: #030303;
+  --panel: #0a0a0a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --brand: #06b6d4;
+}
+body.light{
+  --bg: #ffffff;
+  --panel: #f5f7fb;
+  --text: #0b1220;
+  --muted: #475569;
+  --brand: #06b6d4;
+}
+
+.cookie-banner{
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.25);
+  align-items: center;
+}
+.cookie-banner .cookie-message{ color: var(--muted); font-size:0.95rem; }
+.cookie-banner .cookie-actions{ display:flex; gap:0.5rem; }
+.cookie-banner .cookie-btn{ padding:0.5rem 0.85rem; border-radius:0.5rem; font-weight:600; cursor:pointer; }
+.cookie-banner .cookie-accept{ background: var(--brand); color:#000; border: none; }
+.cookie-banner .cookie-decline{ background: transparent; color: var(--muted); border: 1px solid rgba(11,18,32,0.06); }
+
+body.light .cookie-banner{ border-color: rgba(11,18,32,0.06); box-shadow: 0 6px 20px rgba(11,18,32,0.06); }
+body.light .cookie-banner .cookie-decline{ border-color: rgba(11,18,32,0.08); }
+
+/* Base theme for all pages: ensure background and text follow preference */
+body{
+  background-color: var(--bg, #030303);
+  color: var(--text);
+  transition: background-color 240ms ease, color 240ms ease;
+}
+
+/* Light-mode overrides for common Tailwind utility colors used across pages */
+body.light .text-white { color: var(--text) !important; }
+body.light .text-slate-300,
+body.light .text-slate-400,
+body.light .text-slate-500 { color: var(--muted) !important; }
+
+/* Panels/bg utilities that appear in the templates */
+body.light .bg-\[\#030303\],
+body.light .bg-\[\#0a0a0a\],
+body.light .bg-\[\#080808\] { background-color: var(--panel) !important; }
+
+/* Borders commonly using white color */
+body.light [class*="border-white"] { border-color: rgba(11,18,32,0.06) !important; }
+
+/* Small helper for images flagged to avoid invert */
+body.light img.no-invert { filter: none !important; }
+
+/* Card / panel polish: make project cards visually consistent in both themes */
+.bg-\[\#0a0a0a\],
+.bg-\[\#080808\],
+.bg-\[\#030303\] {
+  background-color: #0a0a0a !important;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.45);
+}
+
+/* If the body itself has a bg utility class (e.g. body.bg-[#030303]) we must
+   target the body element when light mode is active. */
+body.light.bg-\[\#0a0a0a\],
+body.light.bg-\[\#080808\],
+body.light.bg-\[\#030303\] {
+  background-color: var(--panel) !important;
+  border: 1px solid rgba(11,18,32,0.06) !important;
+  box-shadow: 0 4px 12px rgba(11,18,32,0.04) !important;
+}
+
+/* Links inside cards should remain brand color and readable */
+.bg-\[\#0a0a0a\] a,
+.bg-\[\#0a0a0a\] a:visited {
+  color: var(--brand) !important;
+}
+
+/* Fix headings inside cards: remove stroke/whiteness and force readable color */
+.bg-\[\#0a0a0a\] h1,
+.bg-\[\#0a0a0a\] h2,
+.bg-\[\#0a0a0a\] h3,
+.bg-\[\#0a0a0a\] h4,
+.bg-\[\#0a0a0a\] .font-heading {
+  color: var(--text) !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  opacity: 1 !important;
+}
+
+/* Ensure headings are dark in light mode (card backgrounds use panel) */
+body.light .bg-\[\#0a0a0a\] h1,
+body.light .bg-\[\#0a0a0a\] h2,
+body.light .bg-\[\#0a0a0a\] h3,
+body.light .bg-\[\#0a0a0a\] h4,
+body.light .bg-\[\#0a0a0a\] .font-heading {
+  color: rgba(11,18,32,0.95) !important;
+}
+
+/* Navigation tweaks: keep links visible and spaced */
+nav{ padding:1rem 1.25rem !important; }
+nav a{ color: var(--muted); margin-right:0.75rem; text-decoration:none; }
+nav a:hover{ color: var(--text); }
+nav a[aria-current], nav a.active{ color: var(--text); font-weight:700; }
+
+/* Make sure main project list has comfortable width on large screens */
+
+main.max-w-4xl{ max-width: 980px !important; }
+
+/* Project card polish: larger footprint, subtle border and hover lift */
+.project-card {
+  box-shadow: 0 8px 26px rgba(2,6,23,0.45);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 46px rgba(2,6,23,0.55); }
+.project-card img { display:block; width:100%; border-radius:0.5rem; }
+
+/* Separator label helpers used in projects.html */
+.section-separator { display:flex; align-items:center; gap:1rem; }
+.section-separator > div { height:1px; background: rgba(255,255,255,0.05); flex:1; }
+.section-separator .label { padding:0 0.5rem; color: var(--muted); }
+
+/* Light-theme adjustments for cards */
+body.light .project-card { background: var(--panel); border-color: rgba(11,18,32,0.06); }
+body.light .project-card:hover { box-shadow: 0 10px 24px rgba(11,18,32,0.06); transform: translateY(-4px); }
+
+/* Ensure links and CTA buttons inside project cards keep readable colors */
+.project-card a { color: inherit !important; text-decoration: none; }
+.project-card a.text-cyan-400 { color: #22d3ee !important; }
+.project-card a.bg-cyan-500 { color: #000 !important; }
+.project-card a.bg-cyan-500.text-white { color: #fff !important; }
+.project-card a.text-cyan-400:hover { text-decoration: underline; }
+
+
+
